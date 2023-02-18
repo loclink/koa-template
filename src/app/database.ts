@@ -10,7 +10,7 @@ const AppDataSource = new DataSource({
   password: MYSQL_PASSWORD,
   database: MYSQL_DATABASE ?? 'demo_database',
   synchronize: true,
-  logging: true,
+  logging: false,
   entities: [path.join(__dirname, '../entity/*')]
 });
 
