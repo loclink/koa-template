@@ -6,5 +6,6 @@ import { createDatabaseConnect } from './app/database';
 app.listen(APP_PORT, async () => {
   console.log('服务器启动成功：');
   await createDatabaseConnect();
-  console.log(`GET:  http://${ip.address()}:${APP_PORT}/user`);
+  console.log(`API Docs:  http://localhost:${APP_PORT}/apidoc/`);
+  console.log(`API Docs:  http://${ip.address()}:${APP_PORT}/apidoc/`);
 });
