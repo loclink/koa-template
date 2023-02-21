@@ -17,8 +17,17 @@ koa + typescript + typeorm + mysql 的后端项目开发模板，该模板通过
 pnpm install
 ```
 
+## 首次运行
+
+首次运行时，需要执行初始化命令创建数据库和相关数据表
+
+```sh
+pnpm init:db
+```
+
 ## 开发模式
 
 ```sh
 pnpm dev
 ```
+

@@ -4,10 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run api && nodemon src/index.ts",
+    "dev": "npm run api && cross-env KOA_ENV=DEV nodemon src/index.ts",
     "build": "tsc",
-    "init:db": "ts-node scripts/init-database.ts",
-    "api": "apidoc -i src/router/ -o public/apidoc/"
+    "init:db": "cross-env KOA_ENV=INIT ts-node scripts/init-database.ts",
+    "api": "apidoc -i src/router/ -o public/apidoc/",
+    "start": "ts-node scripts/run-dev.ts"
   },
   "keywords": [],
   "author": "",
@@ -32,9 +33,11 @@
     "@types/koa-static": "^4.0.2",
     "@types/koa2-cors": "^2.0.2",
     "@types/node": "^18.14.0",
+    "@types/nodemon": "^1.19.2",
     "@typescript-eslint/eslint-plugin": "^5.52.0",
     "@typescript-eslint/parser": "^5.52.0",
     "apidoc": "^0.54.0",
+    "cross-env": "^7.0.3",
     "eslint": "^8.34.0",
     "nodemon": "^2.0.20",
     "rimraf": "^4.1.2",

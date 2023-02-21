@@ -1,0 +1,5 @@
+{
+  "events": {
+    "routerChange": "npm run api && echo 'api文档已重新生成'"
+  }
+}

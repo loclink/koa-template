@@ -1,6 +1,6 @@
 import path from 'path';
 import { DataSource } from 'typeorm';
-import { MYSQL_DATABASE, MYSQL_HOST, MYSQL_PASSWORD, MYSQL_PORT, MYSQL_USER } from './config';
+import { KOA_ENV, MYSQL_DATABASE, MYSQL_HOST, MYSQL_PASSWORD, MYSQL_PORT, MYSQL_USER } from './config';
 
 const AppDataSource = new DataSource({
   type: 'mysql',
@@ -9,8 +9,8 @@ const AppDataSource = new DataSource({
   username: MYSQL_USER,
   password: MYSQL_PASSWORD,
   database: MYSQL_DATABASE ?? 'demo_database',
-  synchronize: true,
-  logging: false,
+  synchronize: KOA_ENV === 'PRD' ? false : true,
+  logging: process.argv.includes('log') ? true : false,
   entities: [path.join(__dirname, '../entity/*')]
 });
 

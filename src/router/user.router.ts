@@ -5,7 +5,7 @@ import { verifyUser } from '../middleware/user.middleware';
 const userRouter = new Router({ prefix: '/user' });
 
 /**
- * @api {get} /user 用户信息
+ * @api {get} /user 获取用户信息
  * @apiName 用户信息
  * @apiGroup 用户
  * @apiDescription 返回用户详细信息
