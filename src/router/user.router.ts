@@ -5,23 +5,16 @@ import { verifyUser } from '../middleware/user.middleware';
 const userRouter = new Router({ prefix: '/user' });
 
 /**
- * @api {get} /user 获取用户信息
- * @apiName 用户信息
- * @apiGroup 用户
- * @apiDescription 返回用户详细信息
- * @apiSuccess {Number} code 200
- * @apiSuccess {Object} data 用户信息
- * @apiSuccessExample {type} Response-Example:
- * {
- *  code: 200,
- *  data: {
- *    name: '',
- *    age: '',
- *    sex: '',
- *    ...
- *  }
- * }
+ * @swagger
  *
+ * /user/:
+ *   get:
+ *     description: get all users
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ *         description: get all users
  */
 userRouter.get('/', verifyUser, userInfo);
 
