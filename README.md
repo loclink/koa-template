@@ -1,6 +1,6 @@
 # koa-template
 
-koa + typescript + typeorm + mysql 的后端项目开发模板，该模板通过多次开发 koa 项目，在长期积累和沉淀后总结而成。
+koa + typescript + typeorm + mysql
 
 ## 特点：
 
@@ -19,6 +19,18 @@ pnpm install
 
 ## 首次运行
 
+在项目根目录下创建 `.env` 环境变量文件。
+
+```
+APP_PORT=7778
+MYSQL_PORT=3306
+MYSQL_HOST=localhost
+MYSQL_USER=root
+MYSQL_PASSWORD=1118
+MYSQL_DATABASE=demo_db
+
+```
+
 首次运行时，需要执行初始化命令创建数据库和相关数据表
 
 ```sh
@@ -30,4 +42,3 @@ pnpm init:db
 ```sh
 pnpm dev
 ```
-
