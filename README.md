@@ -8,6 +8,7 @@ koa + typescript + typeorm + mysql
 - 一键创建数据库并自动根据实体创建表
 - 自动注册路由、自动加载实体
 - 使用全局中间件提交成功和错误
+- 默认集成 swagger-jsdoc、koa2-swagger-ui，自动根据注释生成 api 文档
 
 ## 安装依赖：
 

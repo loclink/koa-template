@@ -2,19 +2,19 @@
   "name": "koa-template",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
   "scripts": {
-    "dev": "cross-env KOA_ENV=DEV nodemon src/index.ts",
-    "build": "tsc",
+    "dev": "cross-env KOA_ENV=DEV nodemon -r tsconfig-paths/register --files src/index.ts",
+    "build": "rimraf dist && tsc",
     "init:db": "cross-env KOA_ENV=INIT ts-node scripts/init-database.ts",
-    "api": "apidoc -i src/router/ -o public/apidoc/",
-    "start": "ts-node scripts/run-dev.ts"
+    "start": "rimraf dist && tsc && tsc-alias && node ./dist/src/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "MIT",
   "dependencies": {
     "dotenv": "^16.0.3",
+    "fs-extra": "^11.1.0",
     "ip": "^1.1.8",
     "jsonwebtoken": "^9.0.0",
     "koa": "^2.14.1",
@@ -24,9 +24,11 @@
     "koa2-cors": "^2.0.6",
     "koa2-swagger-ui": "^5.7.0",
     "mysql2": "^3.1.2",
+    "tsconfig-paths": "^4.1.2",
     "typeorm": "^0.3.12"
   },
   "devDependencies": {
+    "@types/fs-extra": "^11.0.1",
     "@types/ip": "^1.1.0",
     "@types/koa": "^2.13.5",
     "@types/koa-bodyparser": "^4.3.10",
@@ -44,6 +46,7 @@
     "rimraf": "^4.1.2",
     "swagger-jsdoc": "^6.2.8",
     "ts-node": "^10.9.1",
+    "tsc-alias": "^1.8.3",
     "typescript": "^4.9.5"
   }
 }

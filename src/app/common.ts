@@ -1,6 +1,5 @@
 import fs from 'fs';
 import path from 'path';
-
 import type { IncomingMessage } from 'http';
 import type { Http2ServerRequest } from 'http2';
 import type Koa from 'koa';
@@ -8,13 +7,18 @@ import type { Context, Next } from 'koa';
 import type Router from 'koa-router';
 import type { ErrorType, SuccessType } from '../types';
 
-const autoRegisterRouter = (app: Koa, dir = './src/router') => {
-  const routerDir = path.join(process.cwd(), dir);
+// 自动注册路由
+const autoRegisterRouter = (app: Koa, dir = '../router') => {
+  const routerDir = path.resolve(__dirname, dir);
   fs.readdirSync(routerDir).forEach((file) => {
-    const router: { default: Router } = require(path.join(routerDir, file));
-    if (!router.default) return;
-    app.use(router.default.routes());
-    app.use(router.default.allowedMethods());
+    if (fs.lstatSync(path.resolve(routerDir, file)).isDirectory()) {
+      autoRegisterRouter(app, path.resolve(routerDir, file));
+    } else {
+      const router: { default: Router } = require(path.join(routerDir, file));
+      if (!router.default) return;
+      app.use(router.default.routes());
+      app.use(router.default.allowedMethods());
+    }
   });
 };
 
