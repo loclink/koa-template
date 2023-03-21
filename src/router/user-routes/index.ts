@@ -14,6 +14,11 @@ const userRouter = new Router({ prefix: '/user' });
  *     responses:
  *       200:
  *         description: get all users
+ *         content:
+ *           application/json:
+ *             schema:
+ *               $ref: "#/components/schemas/authLogin"
+ *
  */
 userRouter.get('/', verifyUser, userInfo);
 

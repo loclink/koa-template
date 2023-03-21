@@ -9,13 +9,31 @@ import type { Context } from 'koa';
 const swaggerRouter = new Router();
 const options: Options = {
   swaggerDefinition: {
+    openapi: '3.0.0',
+
     info: {
       // API informations (required)
       title: 'API Docs', // Title (required)
       version: '1.0.0', // Version (required)
       description: 'A sample API' // Description (optional)
     },
-    basePath: '/' // Base path (optional)
+    basePath: '/',
+    schemes: ['http', 'https'], // Base path (optional)
+    components: {
+      schemas: {
+        authLogin: {
+          type: 'object',
+          properties: {
+            email: {
+              type: 'string'
+            },
+            password: {
+              type: 'string'
+            }
+          }
+        }
+      }
+    }
   },
   apis: [path.resolve(__dirname, '../router/*/*')] // all api
 };
