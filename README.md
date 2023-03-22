@@ -8,11 +8,10 @@ koa + typescript + typeorm + mysql
 - 一键创建数据库并自动根据实体创建表
 - 自动注册路由、自动加载实体
 - 使用全局中间件提交成功和错误
-- 默认集成 swagger-jsdoc、koa2-swagger-ui，自动根据注释生成 api 文档
+- 默认集成 swagger-jsdoc、koa2-swagger-ui，自动根据 JsDoc 注释生成 api 文档
+- 集成 pm2 管理器，生产环境中执行 `pnpm start`
 
 ## 安装依赖：
-
-建议使用 `pnpm`
 
 ```sh
 pnpm install
@@ -23,12 +22,12 @@ pnpm install
 在项目根目录下创建 `.env` 环境变量文件。
 
 ```
-APP_PORT=7778
-MYSQL_PORT=3306
-MYSQL_HOST=localhost
-MYSQL_USER=root
-MYSQL_PASSWORD=1118
-MYSQL_DATABASE=demo_db
+APP_PORT=7778  # 服务启动端口
+MYSQL_PORT=3306 # mysql 数据库端口
+MYSQL_HOST=localhost  # mysql主机地址
+MYSQL_USER=root # mysql 用户名
+MYSQL_PASSWORD=1118 # mysql 密码
+MYSQL_DATABASE=demo_db # 数据库名称，若数据库不存在，则需执行 `pnpm init:db` 初始化数据库
 
 ```
 
