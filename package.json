@@ -7,7 +7,8 @@
     "dev": "cross-env KOA_ENV=DEV nodemon -r tsconfig-paths/register --files src/index.ts",
     "build": "rimraf dist && tsc",
     "init:db": "cross-env KOA_ENV=INIT ts-node scripts/init-database.ts",
-    "start": "rimraf dist && tsc && tsc-alias && node ./dist/src/index.js"
+    "start": "rimraf dist && tsc && tsc-alias && pm2 start ecosystem.config.js",
+    "stop": "pm2 stop %npm_package_name%"
   },
   "keywords": [],
   "author": "",
