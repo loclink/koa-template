@@ -8,7 +8,7 @@
     "build": "rimraf dist && tsc",
     "init:db": "cross-env KOA_ENV=INIT ts-node scripts/init-database.ts",
     "start": "rimraf dist && tsc && tsc-alias && pm2 start ecosystem.config.js",
-    "stop": "pm2 stop %npm_package_name%"
+    "stop": "pm2 stop ecosystem.config.js"
   },
   "keywords": [],
   "author": "",
